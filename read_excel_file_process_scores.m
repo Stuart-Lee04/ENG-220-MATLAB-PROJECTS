@@ -24,37 +24,37 @@ sizefse = size(finalscoresexample)
 % extract numbers in column 9
 % display scores
 %
-col9 = finalscoresexample(:,9)
-[r c] = size(col9)
+col3 = finalscoresexample(:,3)
+[r c] = size(col3)
 figure(1);
-%stem(col9,'rs-','MarkerFaceColor','b','MarkerSize',8,'MarkerEdgeColor','g');
-plot(col9,'rs-','MarkerFaceColor','b','MarkerSize',8,'MarkerEdgeColor','g');
+%stem(col3,'rs-','MarkerFaceColor','b','MarkerSize',8,'MarkerEdgeColor','g');
+plot(col3,'rs-','MarkerFaceColor','b','MarkerSize',8,'MarkerEdgeColor','g');
 title('Student Scores');
 xlabel('Number of Students');
 ylabel('Scores');
-axis([0 length(col9) -5 max(col9)*1.2]);
+axis([0 length(col3) -5 max(col3)*1.2]);
 grid minor
 %
 % find mean
 %
-meanscores = mean(col9);
-var_scores = var(col9);
+meanscores = mean(col3);
+var_scores = var(col3);
 std_scores = sqrt(var_scores);
-meanL = ones(length(col9))*meanscores;
+meanL = ones(length(col3))*meanscores;
 %
 %
 % do a histogram of scores using 30 bins
 %
 figure(2);
-hist(col9,50)
+hist(col3,50)
 grid minor;
 %
 % sort scores in ascending order
 %
-[scoresa, indexsa] = sort(col9)
+[scoresa, indexsa] = sort(col3)
 %
 % one way to sort scores in descending order
-% [scoresd, indexsd] = sort(col9,'descend')
+% [scoresd, indexsd] = sort(col3,'descend')
 % flip the order of ascend sort
 scoresd = scoresa(end:-1:1)
 indexsd = indexsa(end:-1:1)
@@ -78,7 +78,7 @@ plot(meanL,'r:o');
 axis([0 131 0 110])
 grid minor;
 %
-spread_mean = col9 - meanscores;
+spread_mean = col3 - meanscores;
 %
 figure(5);
 hold on;
@@ -91,8 +91,8 @@ grid minor;
 %
 % find minimum and maximum scores and their index (location)
 %
-[maxs, maxi] = max(col9)
-[mins, mini] = min(col9)
+[maxs, maxi] = max(col3)
+[mins, mini] = min(col3)
 %
 % find index (location) of students in ranges and the number
 % of students in each range
@@ -109,38 +109,38 @@ grid minor;
 %
 % finds students with their socred and grade
 %
-s90 = find(col9>=90);
-ss90 = (col9 >= 90);
+s90 = find(col3>=90);
+ss90 = (col3 >= 90);
 AS = length(s90)
-S90 = ss90 .* col9;
+S90 = ss90 .* col3;
 %
-s80_90 = find(col9>=80 & col9<90);
-ss80_90 = (col9>=80 & col9<90);
+s80_90 = find(col3>=80 & col3<90);
+ss80_90 = (col3>=80 & col3<90);
 BS = length(s80_90)
-S80_90 = ss80_90 .* col9;
+S80_90 = ss80_90 .* col3;
 %
-s70_80 = find(col9>=70 & col9<80);
-ss70_80 = (col9>=70 & col9<80);
+s70_80 = find(col3>=70 & col3<80);
+ss70_80 = (col3>=70 & col3<80);
 CS = length(s70_80)
-S70_80 = ss70_80 .* col9;
+S70_80 = ss70_80 .* col3;
 %
-s60_70 = find(col9>=60 & col9<70);
-ss60 = (col9>=60 & col9<70);
+s60_70 = find(col3>=60 & col3<70);
+ss60 = (col3>=60 & col3<70);
 DS = length(s60_70)
-S60 = ss60 .* col9;
+S60 = ss60 .* col3;
 %
 % for 2D matrices
 %
-%[i90,j90] = find(col9>90);
-%[i80,j80] = find(col9>80 & col9<90);
-%[i70,j70] = find(col9>70 & col9<80);
-%[i60,j60] = find(col9>60 & col9<70);
+%[i90,j90] = find(col3>90);
+%[i80,j80] = find(col3>80 & col3<90);
+%[i70,j70] = find(col3>70 & col3<80);
+%[i60,j60] = find(col3>60 & col3<70);
 %
 figure(6)
 data = [AS BS CS DS];
 explode = [1 0 0 0 ];
 pie(data, explode);
-title('Final Grades');
+title('Exam 1 Grades');
 legend('As','Bs','Cs','Ds','Location','Best');
 %
 disp('>>> END of arrays_final_scores_9b.m <<<')
